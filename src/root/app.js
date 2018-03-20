@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import YTSearch from 'youtube-api-search';
+import _ from 'lodash';
 
 import SearchBar from '../features/search_bar/index';
 import VideoDetail from '../features/video_detail/index';
@@ -29,9 +30,12 @@ class App extends Component {
   }
 
   render() {
+    // debounce making delay of function invoke. It's not going to be invoked oftener than interval
+    const videoSearch = _.debounce((term) => { this.videoSearch(term) }, 300);
+
     return (
       <div>
-        <SearchBar onSearchTermChange={term => this.videoSearch(term)} />
+        <SearchBar onSearchTermChange={videoSearch} />
         <VideoDetail video={this.state.selectedVideo}/>
         <VideoList
           videos={this.state.videos}
