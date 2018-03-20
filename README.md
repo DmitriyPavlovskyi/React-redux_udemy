@@ -1,7 +1,7 @@
 # React app
 
 ### Using:
-Redux, redux-forms, react-router, youtube api
+React and youtube api
 
 #### Commands
 
